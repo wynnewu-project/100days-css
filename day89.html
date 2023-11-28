@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #16a085;
+  }
+  .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+  }
+  .box::before, .box::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    transform: rotate(45deg);
+  }
+
+  .box::before {
+    animation: before 4s linear infinite;
+  }
+  .box::after {
+    animation: after 4s linear infinite;
+  }
+
+  @keyframes before {
+    0% {
+      transform: translateY(0) scale(1, 1) rotate(45deg) ;
+    }
+    20% {
+      transform: scale(1, 1) rotate(90deg);
+    }
+    40% {
+      transform: scaleX(2) scaleY(.5) rotate(90deg);
+    }
+    60% {
+      transform: rotate(135deg) scaleY(2) scaleX(0.5);
+    }
+    80% {
+      transform: rotate(135deg) scaleX(.5) scaleY(2) translateY(15px);
+    }
+    100% {
+      transform: translateY(0) rotate(135deg) scaleX(1) scaleY(1);
+    }
+  }
+
+  @keyframes after {
+    0%, 20% {
+      transform: scale(1, 1) rotate(45deg);
+    }
+    40% {
+      transform: rotate(90deg) scaleX(2) scaleY(.5);
+    }
+    60% {
+      transform: rotate(135deg) scaleX(2) scaleY(.5);
+    }
+    80% {
+      transform: rotate(135deg) scaleX(2) scaleY(.5) translateY(-15px);
+    }
+    100% {
+      transform: translateY(0) rotate(135deg) scaleX(1) scaleY(1);
+    }
+    
+  }
+  </style>
+</head>
+<body>
+  <div class="container" id="container"> 
+    <div class="box"></div>
+  </div>
+  <script> 
+  const ele = document.getElementById("container");
+  for(let i=0; i < 100; i++) {
+    const box = document.createElement("div");
+    box.className = "box";
+    const offsetX = (i % 10) * 40;
+    const offsetY = Math.floor(i / 10) * 40;
+    box.style.top = `${offsetY}px`;
+    box.style.left = `${offsetX}px`;
+    ele.appendChild(box);
+  }
+  </script>
+</body>
+</html>

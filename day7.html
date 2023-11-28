@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    .container {
+      --light-blue: #B2DAFF;
+      --dark-blue: #43627D;
+      --blue: #5F98CD;
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background-color: #264057;
+      border-radius: 4px;
+      color: #666666;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+    .panel {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      background-color: white;
+      z-index: 2;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 8px 8px 14px rgba(0,0,0, 0.4);
+      transition: all .5s ease-in-out;
+    }
+    .menu {
+      box-sizing: border-box;
+      background-color: var(--dark-blue);
+      width: 170px;
+      height: 270px;
+      position: absolute;
+      top: 65px;
+      left: 50px;
+      color: var(--light-blue);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      padding: 12px 20px;
+      transition: all .5s ease-in-out;
+	    transform: translate3d(20px,0,0);
+      font-size: 14px;
+    }
+    .menu.active {
+      transform: translateX(0);
+      box-shadow: 8px 8px 14px rgba(0,0,0, 0.4);
+    }
+    .title {
+      width: 200px;
+      position: absolute;
+      left: 50px;
+      text-align: center;
+      display: inline-block;
+      color: white;
+      font-weight: bold;
+    }
+    .header {
+      height: 60px;
+      background-color: var(--blue);
+      line-height: 60px;
+      padding: 0 20px;
+      position: relative;
+    }
+    .menu-icon {
+      width: 30px;
+      height: 15px;
+      position: absolute;
+      top: 23px;
+      left: 20px;
+      cursor: pointer;
+    }
+    .menu-icon > div{
+      background-color: var(--light-blue);
+      position: absolute;
+    }
+    .menu-icon:hover > div {
+      background-color: white;
+    }
+    .menu-icon .first-line {
+      width: 20px;
+      height: 3px;
+      top: 0;
+      left: 0;
+      border-radius: 12px;
+    }
+    .menu-icon .second-line {
+      width: 30px;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      border-radius: 12px;
+    }
+    .menu-icon .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      right: 0px;
+      top: -2px;
+    }
+    .search-input {
+      opacity: 0;
+      box-sizing: border-box;
+      width: 230px;
+      right: 55px;
+      top: 16px;
+      height: 32px;
+      position: absolute;
+      border: none;
+      border-radius: 24px;
+      padding: 0 17px;
+      transform: translateX(15px);
+      transition: all 0.3s ease-in-out;
+      pointer-events: none;
+    }
+    .search-input:focus {
+      outline: none;
+    }
+    .search-input.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+    .search-icon {
+      position: absolute;
+      top: 23px;
+      right: 20px;
+      color: var(--light-blue);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .search-icon:hover {
+      color: white;
+    }
+    .content {
+      position: relative;
+      height: 240px;
+    }
+
+    .time-line {
+      position: absolute;
+      top: 0px;
+      left: 30px;
+      width: 4px;
+      height: 100%;
+      background-color: #ebebeb;
+    }
+    .item {
+      box-sizing: border-box;
+      margin-left: 36px;
+      height: 80px;
+      padding: 12px 20px 12px 12px;
+      font-size: 15px;
+      cursor: pointer;
+      position: relative;
+    }
+    .item-1 {
+      animation: here-am-i .5s ease-out 0.4s;
+      animation-fill-mode: both;
+    }
+    .item-2 {
+      animation: here-am-i .5s ease-out 0.6s;
+      animation-fill-mode: both;
+    }
+    .item-3 {
+      animation: here-am-i .5s ease-out 0.8s;
+      animation-fill-mode: both;
+    }
+    .item-time {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .item:hover {
+      color: var(--blue);
+    }
+    .item-dot {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      z-index: 3;
+      top: 12px;
+      left: -11px;
+      background-color: white;
+    }
+    .item-dot::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 1px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+    }
+    .panel.show-menu {
+      transform: translateX(167px);
+    }
+    .menu-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    @keyframes here-am-i {
+      0% {
+        transform: translate(0, 50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      
+    }
+  </style>
+  <link href="./fontawesome-free-6.4.2-web/css/fontawesome.css" rel="stylesheet">
+  <link href="./fontawesome-free-6.4.2-web/css/solid.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="panel" id="panel">
+      <div class="header">
+        <div class="menu-icon" id="menuIcon">
+          <div class="first-line"></div>
+          <div class="second-line"></div>
+          <div class="dot"></div>
+        </div>
+        <span class="title">Notifications</span>
+        <input class="search-input" placeholder="Search ..." id="searchInput"/>
+        <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i> 
+      </div>
+      <div class="content">
+        <div class="time-line"></div>
+        <div class="item item-1">
+          <div class="item-dot"></div>
+          <div class="item-time">9:24 AM</div>
+          <div class="item-text">
+            <strong>John Walker</strong> posted a photo on your wall. 
+          </div>
+        </div>
+        <div class="item item-2">
+          <div class="item-dot"></div>
+          <div class="item-time">8:19 AM</div>
+          <div class="item-text">
+            <strong>Alice Parker</strong> commented your last post.
+          </div>
+        </div>
+        <div class="item item-3">
+          <div class="item-dot"></div>
+          <div class="item-time">Yesterday</div>
+          <div class="item-text">
+            <strong>Luke Wayne</strong> added you as friend.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu" id="menu">
+      <div class="menu-item"><i class="fa-solid fa-gauge-high"></i>Dashboard</div>
+      <div class="menu-item"><i class="fa-solid fa-user"></i>Profile</div>
+      <div class="menu-item"><i class="fa-solid fa-bell"></i>Notifications</div>
+      <div class="menu-item"><i class="fa-solid fa-envelope"></i>Messages</div>
+      <div class="menu-item"><i class="fa-solid fa-gear"></i>settings</div>
+    </div>
+  </div>
+  <script> 
+  const menuIconEle = document.getElementById("menuIcon");
+  const panelEle = document.getElementById("panel");
+  const menuEle = document.getElementById("menu");
+  let showMenu = false;
+  menuIconEle.addEventListener("click", (e) => {
+    showMenu = !showMenu;
+    panelEle.className = showMenu ? "panel show-menu" : "panel";
+    menuEle.className = showMenu ? "menu active" : "menu";
+  })
+
+  const searchIconEle = document.getElementById("searchIcon");
+  const searchEle = document.getElementById("searchInput");
+  let showInput = false;
+  searchIconEle.addEventListener("click", (e) => {
+    showInput = !showInput;
+    searchEle.className = showInput ? "search-input active" : "search-input";
+  })
+  </script>
+</body>
+</html>

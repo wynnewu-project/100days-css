@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #2c3e50;
+    --purple: #8e44ad;
+  }
+
+  .button {
+    color: #2c3e50;
+    position: absolute;
+    --width: 200px;
+    --height: 70px;
+    z-index: 3;
+    font-size: 25px;
+    text-align: center;
+    line-height: 70px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--width);
+    height: var(--height);
+    background-color: white;
+    transition: all .3s ease-in-out;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.1);
+    z-index: -1;
+  }
+
+  .button::after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--purple);
+    transition: all .3s ease-in-out;
+    z-index: -2;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .button:hover {
+    color: white;
+    transform: translate(13px, 13px);
+  }
+
+  .button:hover::before {
+    transform: translate(0px, 0px);
+    background-color: var(--purple);
+  }
+
+  .button:hover::after {
+    transform: translate(-26px, -26px);
+    background-color: white;
+    z-index: -2;
+  }
+
+  </style>
+
+</head>
+<body> 
+  <div class="container"> 
+    <div class="button center">HOVER ME</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+.container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  box-shadow: 8px 8px 14px rgba(0,0,0,0.4);
+}
+
+.center {
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  left: calc(50% - var(--width) / 2);
+  width: var(--width);
+  height: var(--height);
+}
+
+.circle {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+}

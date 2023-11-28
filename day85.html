@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .point {
+    --size: 2px;
+    background-color: white;
+    transform: translateY(calc(-2.5px * var(--offset)));
+    animation: points 2s ease-in-out infinite both alternate;
+  }
+  @keyframes points {
+    0% {
+      transform: translateY(calc(-1px * var(--offset)));
+    }
+    100% {
+      transform: translateY(calc(1px * var(--offset)));
+    }
+    
+  }
+  </style>
+</head>
+<body> 
+  <div class="container" id="container"> 
+  </div>
+  <script> 
+  const ele = document.getElementById("container");
+  for(let i=1; i <= 200;i++) {
+    const point = document.createElement("div");
+    point.className = "point circle";
+    const offset = i < 100 ? i * i /70 : (200 - i) * (200 - i)/70;
+    point.style.setProperty("--offset", offset);
+    ele.appendChild(point);
+  }
+  </script>
+</body>
+</html>

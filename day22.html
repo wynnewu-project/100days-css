@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-image: linear-gradient(to bottom, #28404E 0%, #1c2e38 100%);
+    padding: 48px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .progress {
+    box-sizing: border-box;
+    border-radius: 50%;
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    left: calc(var(--center-x) - var(--size) / 2);
+    top: calc(var(--center-y) - var(--size) / 2);
+    border: var(--border-width) solid #1B2A33;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .progress-big {
+    --center-x: 200px;
+    --center-y: 180px;
+    --border-width: 10px;
+    --size: 120px;
+    --back-color: #27E1AE;
+  }
+  .progress circle {
+    cx: 150;
+    cy: 75;
+    r: calc(var(--size) / 2 - var(--border-width) / 2);
+    stroke: var(--back-color);
+    stroke-width: var(--border-width);
+    fill: none;
+    stroke-dasharray: var(--dasharray);
+    stroke-dashoffset: var(--dashoffset);
+    transform-origin: center center;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    animation: progress-loading 1s linear;
+  }
+
+  .progress-big circle {
+    --dasharray: 358;
+    --dashoffset: 60;
+  }
+
+  .progress-big .number {
+    font-size: 24px;
+  }
+  .progress-big .label {
+    font-size: 14px;
+  }
+
+  .progress-small {
+    --back-color: #5CE1EC;
+    --size: 80px;
+    --center-y: 310px;
+    --border-width: 6px;
+    --dasharray: 232;
+  }
+
+  .progress-2 circle {
+    --dashoffset: 80;
+  }
+  .progress-3 circle {
+    --dashoffset: 140;
+  }
+  .progress-2 {
+    --center-x: 130px;
+  }
+  .progress-3 {
+    --center-x: 270px;
+  }
+  .progress-small .number {
+    font-size: 17px;
+  }
+  .progress-small .label {
+    font-size: 12px;
+  }
+  .label {
+    color: #648192;
+  }
+  svg {
+    position: absolute;
+  }
+
+  @keyframes progress-loading {
+    0% {
+      stroke-dashoffset: var(--dasharray); 
+    }
+
+    100% {
+      stroke-dashoffset: var(--dashoffset);
+    }
+    
+  }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div>YOUR DAILY</div>
+    <div class="title">PROGRESS</div>
+    <div class="progress progress-big"> 
+      <svg> <circle/> </svg>
+      <div class="number">2758</div>
+      <div class="label">kcal</div>
+    </div>
+    <div class="progress progress-small progress-2">
+      <svg> <circle/> </svg>
+      <div class="number">8563</div>
+      <div class="label">steps</div>
+    </div>
+    <div class="progress progress-small progress-3">
+      <svg> <circle/> </svg>
+      <div class="number">6,2</div>
+      <div class="label">km/h</div>
+    </div>
+  </div>
+</body>
+</html>

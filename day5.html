@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  .container {
+    width: 400px;
+    height: 400px;
+    border-radius: 8px;
+    background-color: #42A7A1;
+    position: relative;
+  }
+  .card {
+    width: 280px;
+    height: 220px;
+    position: absolute;
+    top: calc(50% - 110px);
+    left: calc(50% - 140px);
+    background-color: red;
+    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .card-header {
+    background-color: #F1BA64;
+    height: 60px;
+    color: white;
+    padding: 0px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-title, .extra-price {
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .sub-title, .extra-label {
+    font-size: 0.9rem;
+  }
+  .card-body {
+    background-color: white;
+    height: 160px;
+    padding: 0px 14px;
+    position: relative;
+  }
+  .card-body>div {
+    height: 40px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .weeklabel {
+    color: #949494;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 8px;
+    font-size: 0.8rem;
+  }
+  .legend {
+    text-align: end;
+    color: #606060;
+    font-size: 0.9rem;
+    line-height: 40px;
+  }
+  .legend span+span {
+    margin-left: 8px;
+  }
+  .legend .red::before, .legend .blue::before {
+    content: "";
+    width: 10px;
+    height: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+  } 
+  .legend .red::before {
+    background-color: #FA7373;
+  }
+  .legend .blue::before {
+    background-color: #7BA2FF;
+  }
+  .red-box {
+    background-color: #FA7373;
+  }
+  .blue-box {
+    background-color: #7BA2FF;
+  }
+  div[class^="point-"] {
+    position: absolute;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+  }
+  .red div[class^="point-"] {
+    background-color: #FA7373;
+  }
+  .blue div[class^="point-"] {
+    background-color: #7BA2FF;
+  }
+  div[class*="tooltip"] {
+    display: none;
+    font-size: 0.5rem;
+    position: absolute;
+    bottom: 13px;
+    left: -12px;
+    padding: 8px 6px;
+    color: white;
+    border-radius: 4px;
+    background-color: inherit;
+  }
+  div[class*="tooltip"]::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top:calc(100% - 3px);
+    left: calc(50% - 3px);
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+  div[class^="point-"]:hover div[class*="tooltip"] {
+    display: block;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  polyline {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .red polyline {
+    stroke: #FA7373;
+  }
+
+  .blue polyline {
+    stroke: #7BA2FF;
+  }
+
+  .red .point-1 { left: 32px; top: 88px; }
+  .red .point-2 { left: 68px; top: 50px;}
+  .red .point-3 { left: 104px; top: 60px;}
+  .red .point-4 { left: 140px; top: 50px;}
+  .red .point-5 { left: 176px; top: 77px;}
+  .red .point-6 { left: 212px; top: 90px;}
+  .red .point-7 { left: 248px; top: 60px;}
+
+  .blue .point-1 { left: 32px; top: 100px; }
+  .blue .point-2 { left: 68px; top: 90px;}
+  .blue .point-3 { left: 104px; top: 106px;}
+  .blue .point-4 { left: 140px; top: 98px;}
+  .blue .point-5 { left: 176px; top: 103px;}
+  .blue .point-6 { left: 212px; top: 113px;}
+  .blue .point-7 { left: 248px; top: 105px;}
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div class="title">
+          <div class="main-title">WEEKLY REPORT</div>
+          <div class="sub-title">01.Feb - 07.Feb</div>
+        </div>
+        <div class="extra">
+          <div class="extra-label">Revenue</div>
+          <div class="extra-price">$ 3621.79</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="legend">
+          <span class="red">Views</span>
+          <span class="blue">Purchases</span>
+        </div>
+        <div class="row-1"></div>
+        <div class="row-2"></div>
+        <div class="weeklabel">
+          <span>MON</span>
+          <span>TUE</span>
+          <span>WED</span>
+          <span>THU</span>
+          <span>FRI</span>
+          <span>SAT</span>
+          <span>SUN</span>
+        </div>
+        <div class="data red">
+          <svg>
+            <polyline points="35 90,71 52, 107 62, 143 52, 179 79, 215 92, 251 62" stroke="black"></polyline>
+          </svg>
+          <div class="point-1">
+            <div class="point1-tooltip">458</div>
+          </div>
+          <div class="point-2">
+            <div class="point2-tooltip">458</div>
+          </div>
+          <div class="point-3">
+            <div class="point3-tooltip">458</div>
+          </div>
+          <div class="point-4">
+            <div class="point4-tooltip">458</div>
+          </div>
+          <div class="point-5">
+            <div class="point5-tooltip">458</div>
+          </div>
+          <div class="point-6">
+            <div class="point6-tooltip">458</div>
+          </div>
+          <div class="point-7">
+            <div class="point7-tooltip">458</div>
+          </div>
+        </div>
+        <div class="data blue">
+          <svg>
+            <polyline points="35 102,71 92, 107 108, 143 100, 179 105, 215 115, 251 107" stroke="black"></polyline>
+          </svg>
+          <div class="point-1">
+            <div class="point1-tooltip">458</div>
+          </div>
+          <div class="point-2">
+            <div class="point2-tooltip">458</div>
+          </div>
+          <div class="point-3">
+            <div class="point3-tooltip">458</div>
+          </div>
+          <div class="point-4">
+            <div class="point4-tooltip">458</div>
+          </div>
+          <div class="point-5">
+            <div class="point5-tooltip">458</div>
+          </div>
+          <div class="point-6">
+            <div class="point6-tooltip">458</div>
+          </div>
+          <div class="point-7">
+            <div class="point7-tooltip">458</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

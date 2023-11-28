@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head> 
+  <style>
+    @import url(./base.css);
+    .container {
+      background-color: #27ae60;
+    }
+    .bg {
+      background-color: #2ecc71;
+    }
+    #cb {
+      display: none;
+    }
+    .label {
+      --size: 25px;
+      --width: var(--size);
+      --height: var(--size);
+      background-color: white;
+      box-shadow: 1px 3px 3px 0 rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+    }
+    #cb:checked ~ .label {
+      background-color: red;
+    }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <input type="checkbox" class="cb" name="cb"/>
+    <label for="cb" class="label circle center"/>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #8e44ad;
+  }
+  .brain {
+    --size: 50px;
+    background-color: white;
+    position: absolute;
+    top: 50px;
+    left: 175px;
+  }
+  .body {
+    width: 66px;
+    height: 120px;
+    background-color: white;
+    border-radius: 8px;
+    position: absolute;
+    top: 110px;
+    left: 167px;
+  }
+  .left-leg, .right-leg {
+    background-color: white;
+    width: 31px;
+    height: 140px;
+    border-radius: 16px;
+    position: absolute;
+    top: 210px;
+  }
+  .left-leg {
+    left: 167px;
+  }
+  .right-leg {
+    left: 202px;
+  }
+  .right-arm {
+    width: 18px;
+    height: 60px;
+    background-color: white;
+    position: absolute;
+    top: 112px;
+    left: 160px;
+    transform: rotate(16deg);
+    transform-origin: 16px 16px ;
+    border-radius: 16px;
+  }
+  .right-arm-hand {
+    width: 18px;
+    height: 60px;
+    background-color: white;
+    position: absolute;
+    top: 154px;
+    left: 151px;
+    border-radius: 16px;
+    transform: rotate(8deg);
+    transform-origin: 0 0 ;
+  }
+  .left-arm {
+    position: absolute;
+    width: 60px;
+    height: 18px;
+    background-color: white;
+    top: 111px;
+    left: 218px;
+    border-radius: 16px;
+    transform: rotate(20deg);
+    transform-origin: 16px 16px;
+    animation: arms 1s linear both alternate infinite;
+  }
+  .left-arm-hand {
+    position: absolute;
+    width: 18px;
+    height: 60px;
+    background-color: white;
+    top: -45px;
+    left: 42px;
+    border-radius: 16px;
+    transform: rotate(20deg) translateX(10px);
+    animation: hands 1s linear both alternate infinite;
+  }
+  @keyframes arms {
+    100% {
+      transform: rotate(8deg);
+    }
+  }
+  @keyframes hands {
+    100% {
+      transform: rotate(-20deg) translateX(-8px);
+    }
+    
+  }
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="brain circle"></div>
+    <div class="body"></div>
+    <div class="right-arm"></div>
+    <div class="right-arm-hand"></div>
+    <div class="left-arm">
+      <div class="left-arm-hand"></div>
+    </div>
+    <div class="left-leg"></div>
+    <div class="right-leg"></div>
+  </div>
+</body>
+</html>

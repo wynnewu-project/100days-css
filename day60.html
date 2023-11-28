@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #34495e;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+  .plane {
+    background-color: #e67e22;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    z-index: 3;
+    transition: all .4s ease-in-out;
+  }
+  div[class^="text"] {
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: bolder;
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    top: 170px;
+    left: 50px;
+  }
+  .text-front {
+    z-index: 1;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  .trigger {
+    position: absolute;
+    top: calc(2px * (var(--i) - 1));
+    left: 0;
+    width: 400px;
+    height: 2px;
+    z-index: 5;
+  }
+  </style>
+</head>
+<body> 
+  <div class="container" id="container"> 
+    <div class="plane" id="plane">
+      <div class="text-front">HOVER</div>
+    </div>
+    <div class="text">HOVER</div>
+  </div>
+  <script> 
+  const ele = document.getElementById("container");
+  const plane = document.getElementById("plane");
+  for(let i=1;i<=200;i++) {
+   const triggerEle = document.createElement("div");
+   triggerEle.className = "trigger";
+   triggerEle.style.setProperty("--i", i);
+   triggerEle.addEventListener("mouseenter", (e) => {
+     let height = 2 * i;
+     plane.style.height = `${height}px`;
+     plane.style.transition = "initial"
+   })
+   ele.insertBefore(triggerEle, plane);
+  }
+  ele.addEventListener("mouseleave", (e) => {
+    plane.style.height = "200px";
+    plane.style.transition = "initial"
+  })
+  </script>
+</body>
+</html>

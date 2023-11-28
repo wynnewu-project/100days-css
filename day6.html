@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  .container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 8px;
+    background-image: linear-gradient(45deg, #EEBE6C 0%, #CA7C4E 100%) ;
+    color: #786450;
+    font-weight: 600;
+    --regular-font: normal;
+    --small-font: 0.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .center {
+    height: 300px;
+    width: 320px;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 160px);
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 8px 8px 13px rgba(0,0,0, 0.4);
+    overflow: hidden;
+  }
+  .profile {
+    width: 200px;
+    float: left;
+    padding: 36px 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .career, .label {
+    font-size: var(--small-font);
+    font-weight: var(--regular-font);
+  }
+  .career {
+    margin-bottom: 24px;
+  }
+  .status {
+    width: 120px;
+    float: right;
+  }
+  .avatar {
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 24px;
+    margin-left: calc(50% - 35px);
+    position: relative;
+    cursor: pointer;
+  }
+  .avatar img {
+    display: block;
+    border-radius: 50%;
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 98px;
+    background-color: #F5E8DF;
+    cursor: pointer;
+  }
+  .items+.items {
+    margin-top: 3px;
+  }
+  .items:hover {
+    background-color: #E1CFC2;
+  }
+  .action {
+    width: 100px;
+    text-align: center;
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: 1px solid #786450;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: var(--small-font);
+    margin-left: 12px;
+  }
+  .action:hover {
+    color: white;
+    background-color: #786450;
+  }
+  div[class^="circle"] {
+    position: absolute;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+  .circle1 {
+    width: 82px;
+    height: 82px;
+    top: -6px;
+    left: -6px;
+    border-color: #786450 transparent #786450 #786450;
+    transition: all 1.5s ease-in-out;
+  }
+  .avatar:hover .circle1 {
+    transform: rotate(-360deg);
+  }
+  .avatar:hover .circle2{
+    transform: rotate(360deg);
+  }
+  .circle2 {
+    width: 76px;
+    height: 76px;
+    top: -3px;
+    left: -3px;
+    border-color: #786450 #786450 #786450 transparent ;
+    transition: all 1.5s ease-in-out;
+  }
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="center"> 
+      <div class="profile">
+        <div class="avatar">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <img src="./day6.jpg"/>
+        </div>
+        <div class="name">Jessica Potter</div>
+        <div class="career">Visual Artist</div>
+        <div class="action">Follow</div>
+        <div class="action">Message</div>
+      </div>
+      <div class="status">
+        <div class="items">
+          <div class="count">523</div>
+          <div class="label">Posts</div>
+        </div>
+        <div class="items">
+          <div class="count">1387</div>
+          <div class="label">Likes</div>
+        </div>
+        <div class="items">
+          <div class="count">146</div>
+          <div class="label">Follower</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

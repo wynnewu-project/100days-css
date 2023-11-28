@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #E16D6C;
+    color: white;
+  }
+  .circle {
+    --size: 60px;
+    background-color: white;
+    position: absolute;
+    top: 170px;
+    left: 170px;
+    animation: circle-drop 1s ease-in-out both;
+  }
+  .line {
+    width: 150px;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: 198px;
+    left: 50px;
+    animation: line 1s ease-in-out 1s both;
+  }
+  .line2 {
+    width: 150px;
+    height: 4px;
+    position: absolute;
+    background-color: white;
+    top: 198px;
+    right: 50px;
+    animation: line 1s ease-in-out 1s reverse both;
+  }
+
+  div[class^="rect-"] {
+    position: absolute;
+    background-color: white;
+    width: 4px;
+    height: 80px;
+    top: 160px;
+    animation: rect .5s ease-in-out 2s both;  
+  }
+  .rect-left {
+    left: 50px;
+  }
+  
+  .rect-left::before, .rect-left::after, .rect-right::after, .rect-right::before {
+    content: "";
+    width: 24px;
+    height: 4px;
+    position: absolute;
+    background-color: white;
+    animation: rect-hor .5s ease-in-out 2.5s both;
+  }
+
+  .rect-left::after, .rect-left::before {
+    left: 0;
+    transform-origin: 0 50%;
+  }
+
+  .rect-left::before, .rect-right::before {
+    top: 0;
+  }
+  .rect-left::after, .rect-right::after {
+    bottom: 0;
+  }
+
+  .rect-right {
+    right: 50px;
+  }
+
+  .rect-right::before, .rect-right::after {
+    right: 0;
+    transform-origin: 100% 50%;
+  }
+
+
+  .text {
+    width: 240px;
+    height: 120px;
+    position: absolute;
+    top: 140px;
+    left: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .small-text {
+    font-size: 24px;
+  }
+  .small-text.top {
+    animation: small-top .5s ease-out 3s both;
+  }
+  .small-text.bottom {
+    animation: small-bottom .5s ease-out 3s both;
+  }
+  .big-text {
+    font-size: 48px;
+    font-weight: bold;
+    transform: scaleY(0);
+    animation: big-text 1s ease-in-out 2s both; 
+  }
+
+  @keyframes circle-drop {
+    30% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes line {
+    0% {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+    50% {
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+    50.1% {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    100% {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+  }
+  @keyframes rect {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes rect-hor {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes big-text {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes small-top {
+    0% {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes small-bottom {
+    0% {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="circle"></div>
+    <div class="line"></div>
+    <div class="line2"></div>
+    <div class="rect-left"></div>
+    <div class="rect-right"></div>
+    <div class="text">
+      <div class="small-text top">COLLECT</div>
+      <div class="big-text">MOMENTS</div>
+      <div class="small-text bottom">NOT THINGS</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #363847;
+  }
+  .eye {
+    --width: 160px;
+    --height: 160px;
+    background-color: #D8D8D8;
+    border-radius: 160px 0px;
+    transform: rotate(45deg);
+    overflow: hidden;
+  }
+  .eyeball {
+    --size: 35px;
+    border: 40px solid white;
+    background-color: #617983;
+    transform: translate(20px, 24px);
+  }
+
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="eye center"> 
+      <div class="eyeball circle center"></div>
+    </div>
+  </div>
+</body>
+</html>

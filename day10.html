@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head> 
+  <style>
+    @import url(./base.css);
+    .container {
+      background-color: #4C4C4C;
+      color: white;
+    }
+
+    .clock {
+      --width: 220px;
+      --height: 220px;
+      background-color: black;
+      border: 2px dotted white;
+      border-radius: 50%;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 10px black, 0 0 0 20px #3A3A3A ;
+    }
+
+    .info {
+      --width: 135px;
+      --height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+    }
+    .time {
+      font-size: 56px;
+      font-weight: bold;
+    }
+    .monitor {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .heart {
+      display: inline-block;
+      --size: 10px;
+      width: var(--size);
+      height: var(--size);
+      --color: #F85B5B;
+      background-color: var(--color);
+      position: relative;
+      transform: rotate(45deg);
+      margin:0 4px 0 8px;
+      animation: heart-beat 0.9s ease-in-out infinite;
+      animation-fill-mode: both;
+    }
+    .heart::before, .heart::after {
+      content: "";
+      width: var(--size);
+      height: var(--size);
+      position: absolute;
+      background-color: var(--color);
+    }
+    .heart::after {
+      top: calc(-1 * var(--size) + 4px);
+      left: 0;
+      border-radius: 8px;
+    }
+    .heart::before{
+      top: 0;
+      left: calc(-1 * var(--size) + 4px);
+      border-radius: 8px;
+    }
+    .spinner {
+      --width: 225px;
+      --height: 225px;
+    }
+    .spinner circle{
+      stroke: #F85B5B;
+      fill: none;
+      stroke-dasharray: 314;
+      transform: rotate(-90deg);
+      transform-origin: center center;
+      animation: spinner 5s linear infinite;
+    }
+
+    @keyframes heart-beat {
+      0% {
+        transform: scale(1) rotate(45deg);
+      }
+      35% {
+        transform: scale(1.2) rotate(45deg);
+      }
+      
+    }
+
+    @keyframes spinner {
+      0% {
+        stroke-dashoffset: 314;
+        transform: rotate(-90deg) scaleY(1);
+      }
+      50% {
+        stroke-dashoffset: 0;
+        transform: rotate(-90deg) scaleY(1);
+      }
+      50.001% {
+        stroke-dashoffset: 0;
+        transform: rotate(-90deg) scaleY(-1);
+      }
+      100% {
+        stroke-dashoffset: 314;
+        transform: rotate(-90deg) scaleY(-1);
+      }
+      
+    }
+
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="clock center">
+      <svg viewBox="0 0 100 100" class="spinner center">
+        <circle cx="50" cy="50" r="49.5"/>
+      </svg>
+      <div class="info center">
+        <div class="day">MON 15 JAN 2015</div>
+        <div class="time">11:42</div>
+        <div class="monitor">
+          <div>
+            <span class="heart"></span>
+            <span>81</span>
+          </div>
+          <div>1248 KCAL </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

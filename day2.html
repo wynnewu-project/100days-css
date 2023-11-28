@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+  <style>
+
+  .container {
+    width: 400px;
+    height: 400px;
+    background: #3FAF82; 
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    position: relative;
+  }
+  .center {
+    width: 100px;
+    height: 62px;
+    position: absolute;
+    top: calc(50% - 31px);
+    left: calc(50% - 50px);
+    cursor: pointer;
+  }
+  .center div {
+      width: 100px;
+      height: 10px;
+      position: absolute;
+      left: 0px;
+      background-color: white;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      border-radius: 4px;
+  }
+
+
+  .line1 {
+    top: 0px;
+  }
+
+  .line2 {
+    top: 26px;
+  }
+  .line3 {
+    bottom: 0px;
+  }
+  
+  @keyframes line1 {
+    50% {
+      transform: translateY(26px);
+    }
+    to {
+      transform: translateY(26px) rotate(45deg);
+    }
+  }
+
+  @keyframes line2 {
+    to {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes line3 {
+    50%{
+      transform: translateY(-26px);
+    }
+    100% {
+      transform: translateY(-26px) rotate(135deg);
+    }
+  }
+
+  @keyframes line1-deactive {
+    from {
+      transform: translateY(26px) rotate(45deg);
+    }
+    50% {
+      transform: translateY(26px) rotate(0deg);
+    }
+  }
+
+  @keyframes line2-deactive {
+    from {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes line3-deactive {
+    from {
+      transform: translateY(-26px) rotate(135deg);
+    }
+    50% {
+      transform: translateY(-26px) rotate(0deg);
+    }
+    
+  }
+
+
+  .center.active .line1 {
+    animation: line1 1s forwards;
+  }
+
+  .center.active .line2 {
+    animation: line2 1s forwards;
+  }
+
+  .center.active .line3 {
+    animation: line3 1s forwards;
+  }
+
+  .center.deactive .line1 {
+    animation: line1-deactive 1s forwards;
+  }
+  .center.deactive .line2 {
+    animation: line2-deactive 1s forwards;
+  }
+  .center.deactive .line3 {
+    animation: line3-deactive 1s forwards;
+  }
+  </style>
+
+</head>
+<body>
+  <div class="container"> 
+    <div class="center">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div>
+  <script> 
+  const ele = document.getElementsByClassName("center")[0];
+  ele.addEventListener("click", (e) => {
+    if(ele.classList.contains("active")) {
+      ele.className = "center deactive"
+    } else {
+      ele.className = "center active";
+    }
+  })
+  </script>
+</body>
+</html>

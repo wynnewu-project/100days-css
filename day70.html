@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+    @import url(./base.css);
+    .container {
+      color: white;
+      background-color: #512626;
+    }
+    .card {
+      background-color: #E27474;
+      margin: auto 0;
+      float: left;
+      position: relative;
+      box-sizing: border-box;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      padding-top: 55px;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: inset 2px 2px 4px 1px rgba(0,0,0,0.2);
+      transform: scale(0.95);
+    }
+
+    .card .week {
+      font-size: 18px;
+    }
+
+    .card .day {
+      font-size: 64px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="card">
+      <div class="week">Friday</div>
+      <div class="day">15</div>
+    </div>
+    <div class="card">
+      <div class="week">Saturday</div>
+      <div class="day">16</div>
+    </div>
+    <div class="card">
+      <div class="week">Sunday</div>
+      <div class="day">17</div>
+    </div>
+    <div class="card">
+      <div class="week">Monday</div>
+      <div class="day">18</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #34495e;
+  }
+  .center {
+    --width: 200px;
+    --height: 140px;
+  }
+  .center::before {
+    content: "";
+    background-color: #bdc3c7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 16px;
+    width: var(--width);
+    height: 6px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  .ball {
+    box-sizing: border-box;
+    --size: 40px;
+    position: absolute;
+    bottom: 0;
+    left: calc(40px * var(--i));
+    background-color: white;
+    transform-origin: 50% -100px;
+  }
+  .ball::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    height: 100px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .ball:nth-child(1) {
+    animation: left .8s ease-out infinite alternate;
+  }
+  .ball:last-child {
+    animation: right .8s ease-out .8s infinite alternate;
+  }
+  @keyframes left {
+    0%, 50% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(30deg);
+    }
+  }
+  @keyframes right {
+    0%, 50% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-30deg);
+    }
+  }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="center"> 
+      <div class="ball circle" style="--i: 0"></div>
+      <div class="ball circle" style="--i: 1"></div>
+      <div class="ball circle" style="--i: 2"></div>
+      <div class="ball circle" style="--i: 3"></div>
+      <div class="ball circle" style="--i: 4"></div>
+    </div>
+  </div>
+
+</body>
+</html>

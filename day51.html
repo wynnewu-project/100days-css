@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #272c34;
+  }
+
+  .center {
+    --height: 30px;
+    --width: 120px;
+    background-color: white;
+    border-radius: 4px;
+  }
+  .number {
+    display: flex;
+    color: #478BB8;
+  }
+  .number *{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+  }
+
+  .number *::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    content: "";
+    text-align: center;
+  }
+
+  .unit::before {
+    animation: count 10s steps(1) infinite;
+  }
+
+  .ten::before {
+    animation: count 100s steps(1) infinite;
+  }
+
+  .hundred::before {
+    animation: count 1000s steps(1) infinite;
+  }
+
+  .thousand::before {
+    animation: count 10000s steps(1) infinite;
+  }
+
+  .pause {
+    transition: all .3s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    left: 48px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .pause::before, .pause::after {
+    background-color: white;
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 5px;
+    height: 18px;
+  }
+
+  .pause::before {
+    left: 0px;
+  }
+  
+  .pause::after {
+    right: 0px;
+  }
+
+  .play {
+    position: absolute;
+    cursor: pointer;
+    top: 50px;
+    left: 54px;
+    width: 0;
+    height: 0;
+    content: "";
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent white;
+    transition: all .3s ease;
+    transform: scale(0);
+    opacity: 0;
+  }
+  .btn {
+    display: none;
+    margin-top: 24px;
+  }
+
+  #btn:checked ~ .btn-icon .play {
+    transform: scale(1);
+    opacity: 1;
+  }
+  #btn:checked ~ .btn-icon .pause {
+    transform: scale(0);
+    opacity: 0;
+  }
+  #btn:checked ~ .number *::before {
+    animation-play-state: paused;
+  }
+
+  @keyframes count{
+    0% {
+      content: "0"
+    }
+    10% {
+      content: "1"
+    }
+    20% {
+      content: "2"
+    }
+    30% {
+      content: "3"
+    }
+    40% {
+      content: "4";
+    }
+    50% {
+      content: "5";
+    }
+    60% {
+      content: "6";
+    }
+    70% {
+      content: "7";
+    }
+    80% {
+      content: "8";
+    }
+    90% {
+      content: "9";
+    }
+    100% {
+      content: "0";
+    }
+  }
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="button center"> 
+      <input type="checkbox" class="btn" id="btn"/>
+      <label for="btn" class="btn-icon">
+        <div class="play"></div>
+        <div class="pause"></div>
+      </label>
+      <div class="number">
+        <div class="thousand"></div>
+        <div class="hundred"></div>
+        <div class="ten"></div>
+        <div class="unit"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

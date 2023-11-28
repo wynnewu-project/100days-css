@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #BDCEDB;
+  }
+  .cb {
+    display: none;
+  }
+  .button {
+    --width: 120px;
+    --height: 60px;
+    text-align: center;
+    line-height: var(--height);
+    transform-style: preserve-3d;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border: 2px solid white;
+    transition: all .5s ease-in-out;
+    border-radius: 36px;
+  }
+  .send, .done {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    background-color: white;
+    color: #34495E;
+    border-radius: 36px;
+  }
+  .send {
+    z-index: 1;
+    transform: rotateX(0);
+  }
+  .done {
+    color: white;
+    background-color: #64C760;
+    transform: rotateX(180deg);
+    -moz-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+
+  .cb:checked ~ .button {
+    transform: rotateX(180deg);
+    box-shadow: 4px -8px 12px 0 rgba(0, 0, 0, 0.3);
+  }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <input type="checkbox" name="cb" id="cb" class="cb"/>
+    <label class="button center" for="cb">
+  		<span class="send">SEND</span>
+  		<span class="done">DONE</span>
+  	</label>
+  </div>
+
+</body>
+</html>

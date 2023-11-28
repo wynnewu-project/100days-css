@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #5CA4EA;
+  }
+  .center {
+    --width: 180px;
+    --height: 60px;
+    color: white;
+    font-weight: 100;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .border {
+    stroke: #91C9FF;
+    fill: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .spinner {
+    stroke: #fff;
+    fill: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    stroke-dasharray: 40px 480px;
+    stroke-dashoffset: 40px;
+    transition: all .8s ease-in-out;
+  }
+
+  .center:hover .spinner {
+    stroke-dashoffset: -480px;
+  }
+  .center:hover {
+    background-color: #4F95DA;
+  }
+
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="center">
+      <div class="text">HOVER ME</div>
+      <svg class="border" width="180px" height="60px">
+        <path d="M 180 0 v 60 h -180 v -60 z"/>
+      </svg>
+      <svg class="spinner" width="180px" height="60px">
+        <path d="M 180 0 v 60 h -180 v -60 z"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

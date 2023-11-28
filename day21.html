@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: black;
+  }
+  .brain {
+    --width: 80px;
+    --height: 80px;
+    border-radius: 50%;
+    background-color: gold;
+  }
+  .eye {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    position: absolute;
+    top: 170px;
+    left: 200px;
+    z-index: 1;
+    border-radius: 50%;
+    animation: eye-move .5s ease-in-out infinite alternate;
+  }
+  .mouth {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 160px;
+    left: 200px;
+    z-index: 2;
+    background-color: black;
+    clip-path: polygon(0 50%, 50% 50%, 100% 50%, 50% 50%);
+    animation: open-mouth .5s ease-in-out infinite alternate;
+  }
+  .bean {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    top: 190px;
+    left: 200px;
+    z-index: 4;
+    animation: bean-move 1s linear infinite; 
+  }
+  .bean-item {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: gold;
+    position: absolute;
+    top: 0;
+    left: calc(40px * var(--n) + 15px) ;
+  }
+  @keyframes open-mouth {
+    0% {
+      clip-path: polygon(0 50%, 50% 50%, 100% 50%, 50% 50%);
+
+    }
+    100% {
+      clip-path: polygon(0 50%, 50% 0, 100% 50%, 50% 100%);
+    }
+  }
+  @keyframes eye-move {
+    0% {
+      transform: translate(0,0);
+    }
+    100% {
+      transform: translate(-5px, -2px);
+    }
+  }
+  @keyframes bean-move {
+    100% {
+      transform: translate(-40px);
+    }
+    
+  }
+
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="brain center"></div>
+    <div class="eye"></div>
+    <div class="mouth"></div>
+    <div class="bean">
+      <span class="bean-item" style="--n:1"></span>
+      <span class="bean-item" style="--n:2"></span>
+      <span class="bean-item" style="--n:3"></span>
+      <span class="bean-item" style="--n:4"></span>
+      <span class="bean-item" style="--n:5"></span>
+    </div>
+  </div>
+
+</body>
+</html>

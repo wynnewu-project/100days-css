@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head> 
+  <style>
+    @import url(./base.css);
+    .container {
+      background-color: #f39c12;
+      color: white;
+    }
+    .center {
+      --width: 200px;
+      --font-size: 30px;
+      --height: calc(1.5 * var(--font-size));
+      overflow: hidden;
+      font-size: var(--font-size);
+      display: flex;
+      align-items: top;
+      justify-content: center;
+      gap: 8px;
+    }
+    .item-list {
+      animation: carousel 8s ease-in-out infinite;
+    }
+    .item {
+      display: block;
+      font-weight: bold;
+      height: var(--height);
+      text-shadow: 2px 2px 2px #e67e22;
+    }
+    @keyframes carousel {
+      0%, 20% {
+        transform: translateY(0);
+      }
+      25%, 45% {
+        transform: translateY(calc(-1 * var(--height)));
+      }
+      50%, 70% {
+        transform: translateY(calc(-2 * var(--height)));
+      }
+      75%, 95% {
+        transform: translateY(calc(-3 * var(--height)));
+      }
+      100% {
+        transform: translateY(calc(-4 * var(--height)));
+      }
+      
+    }
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="center"> 
+      <div>I'm a</div>
+      <div class="item-list"> 
+        <div class="item">Panther</div>
+        <div class="item">Leopard</div>
+        <div class="item">Tiger</div>
+        <div class="item">Jaguar</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

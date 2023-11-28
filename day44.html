@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: black;
+  }
+  .box {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    animation: turn 2s ease-in-out calc(0.03s * var(--i)) alternate infinite;
+  }
+
+  @keyframes turn {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+    
+  }
+  </style>
+</head>
+<body> 
+  <div class="container" id="container"> 
+
+  </div>
+  <script> 
+    const container = document.getElementById("container");
+    for(let i =0; i < 20; i++) {
+      const ele = document.createElement("div");
+      const size = `${ 12 + i*14}px`;
+      ele.style.setProperty("--i", i+1);
+      ele.style.setProperty("--width", size);
+      ele.style.setProperty("--height", size);
+      ele.className = "center box";
+      container.appendChild(ele);
+    }
+  </script>
+</body>
+</html>

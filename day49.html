@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #2c3e50;
+    cursor: pointer;
+  }
+  .inner, .outer {
+    --size: 20px;
+    --width: var(--size);
+    --height: var(--size);
+    box-sizing: border-box;
+  }
+  .inner {
+    background-color: green;
+  }
+
+  .outer {
+    border: 1px solid green;
+    animation: scale-up 1.2s ease-in-out infinite;
+  }
+
+  #group {
+    --width: 20px;
+    --height: 20px;
+    transition: all .5s ease-in-out;
+  }
+
+  @keyframes scale-up {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2.5);
+    }
+  }
+  </style>
+</head>
+<body> 
+  <div class="container" id="container"> 
+    <div class="center" id="group"> 
+      <div class="outer circle center"> </div>
+      <div class="inner circle center"> </div>
+    </div>
+  </div>
+  <script> 
+    const groupEle = document.getElementById("group");
+    const containerEle = document.getElementById("container");
+    containerEle.addEventListener("mousemove", e => {
+      const { offsetX, offsetY } = e;
+      const innerOffsetX = offsetX - 10;
+      const innerOffsetY = offsetY - 10;
+
+      if(innerOffsetX > 0 && innerOffsetY > 0) {
+        console.log('in range', groupEle.style)
+        groupEle.style.top = `${innerOffsetY}px`;
+        groupEle.style.left= `${innerOffsetX}px`;
+      } else {
+        groupEle.style.top = "190px";
+        groupEle.style.left = "190px";
+      }
+    })
+    containerEle.addEventListener("mouseleave", e => {
+      groupEle.style.top = "190px";
+      groupEle.style.left = "190px";
+    })
+  </script>
+</body>
+</html>

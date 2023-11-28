@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color:  #27ae60;
+  }
+
+  .round {
+    border-color: white;
+    border-style: dotted;
+    border-width: 10px;
+    box-sizing: border-box;
+    animation: circle 3s ease-in-out calc(0.5s + 0.333 * var(--i)) alternate infinite both;
+  }
+  @keyframes circle {
+    0% {
+      opacity: 0;
+      border-width: 0px;
+    }
+
+    100% {
+      opacity: 1;
+      border-width: 10px;
+    }
+    
+  }
+  </style>
+
+</head>
+<body> 
+  <div id="container" class="container"> 
+
+  </div>
+  <script> 
+  const rootEle = document.getElementById("container");
+  for(let i=0; i < 10; i++) {
+    const circle = document.createElement("div");
+    circle.style.setProperty("--width", `${80 + 30 * i}px`);
+    circle.style.setProperty("--height", `${80 + 30 * i}px`);
+    circle.style.setProperty("--size", `${80 + 30 * i}px`);
+    circle.style.setProperty("--i", `${i + 1}s`);
+    circle.className = "circle center round";
+    rootEle.appendChild(circle);
+  }
+  </script>
+</body>
+
+</html>

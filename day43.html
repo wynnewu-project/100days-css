@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head> 
+  <style> 
+  @import url(./base.css);
+  .container {
+    background-color: #404556;
+  }
+  .center {
+    --width: 80px;
+    --height: 150px;
+  }
+
+  .bottom {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    fill: #E5E5E5;
+  }
+
+  .light {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    fill: #FFF35C;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+  }
+
+  .light:hover {
+    fill: #8C8F99;
+  }
+
+  .glow {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    background-color:#FFF35C;;
+    box-shadow: 0 0 50px 0 #FFF35C;
+    border-radius: 50%;
+    transition: all .5s ease-in-out;
+  }
+
+  .light:hover ~ .glow {
+	  opacity: 0;
+  }
+
+  </style>
+</head>
+<body> 
+  <div class="container"> 
+    <div class="center"> 
+      <svg class="light" width="80px" light="100px">
+        <path d="
+        M 22 95
+        C 24 65 -5 60 16 30 
+        C 28 15 48 15 64 30
+        C 85 65 54 65 58 95
+        z
+        "/>
+      </svg>
+      <div class="glow"></div>
+      <svg class="bottom" width="80px" height="50px">
+        <path d="
+        M 22 0 h 36 Q 64 4 58 8 h -36 Q 16 4 22 0
+        M 22 12 h 36 Q 64 16 58 20 h -36 Q 16 16 22 12 
+        M 20 24 h 40 L 48 36 h -16 z
+        "/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
